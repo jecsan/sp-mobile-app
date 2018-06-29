@@ -2,11 +2,15 @@ package com.sourcepad.sourcepadsuite.data.api
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import io.objectbox.annotation.Entity
+import io.objectbox.annotation.Id
 
+@Entity
 class User {
 
     @SerializedName("id")
     @Expose
+
     var id: String? = null
     @SerializedName("email")
     @Expose
@@ -25,7 +29,7 @@ class User {
     var position: String? = null
     @SerializedName("mobile_number")
     @Expose
-    var mobileNumber: Any? = null
+    var mobileNumber: String? = null
     @SerializedName("skype")
     @Expose
     var skype: String? = null
@@ -40,7 +44,8 @@ class User {
     var birthday: String? = null
     @SerializedName("id_number")
     @Expose
-    var idNumber: Int? = null
+    @Id
+    var idNumber: Long = 0
     @SerializedName("tin_number")
     @Expose
     var tinNumber: String? = null

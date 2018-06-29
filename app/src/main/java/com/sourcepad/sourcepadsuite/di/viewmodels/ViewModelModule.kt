@@ -3,6 +3,7 @@ package com.sourcepad.suite.di.viewmodels
 import android.arch.lifecycle.ViewModel
 import com.sourcepad.sourcepadsuite.presentation.account.LoginViewModel
 import com.sourcepad.sourcepadsuite.presentation.dashboard.DashboardViewModel
+import com.sourcepad.sourcepadsuite.presentation.employee.EmployeeViewModel
 import com.sourcepad.suite.presentation.DetailFragmentViewModel
 import com.sourcepad.suite.presentation.MainActivityViewModel
 import dagger.Binds
@@ -41,5 +42,8 @@ abstract class ViewModelModule {
     @ViewModelKey(DashboardViewModel::class)
     internal abstract fun dashboardViewModel(viewModel: DashboardViewModel): ViewModel
 
-
+    @Binds
+    @IntoMap
+    @ViewModelKey(EmployeeViewModel::class)
+    internal abstract fun employeeViewModel(viewModel: EmployeeViewModel): ViewModel
 }

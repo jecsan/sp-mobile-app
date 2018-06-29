@@ -9,6 +9,8 @@ sealed class DataState {
 }
 
 data class LoginState(override val state: State, val user: User? = null, val source: Source? = null) : DataState()
+data class UserState(override val state: State, val user: User? = null, val source: Source? = null) : DataState()
+data class EmployeeState(override val state: State, val user: List<User>? = null, val source: Source? = null) : DataState()
 
 enum class State {
     DEFAULT, LOADING, SUCCESS, FAILED,

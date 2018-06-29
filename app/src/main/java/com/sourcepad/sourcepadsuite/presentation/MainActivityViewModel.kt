@@ -18,4 +18,8 @@ class MainActivityViewModel @Inject constructor(private val okHttpClient: OkHttp
     fun checkAuth(activity: Activity) {
         gateKeeper.checkUserAuth(activity)
     }
+
+    fun logout() {
+        gateKeeper.logout()
+    }
 }

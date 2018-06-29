@@ -1,6 +1,7 @@
 package com.sourcepad.sourcepadsuite.di.data
 
 import android.content.Context
+import com.greyblocks.gatekeeper.GateKeeper
 import com.sourcepad.sourcepadsuite.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -22,9 +23,16 @@ class NetworkModule(val context: Context) {
      */
     @Provides
     @Singleton
-    fun provideTokenInterceptor(): Interceptor {
+    fun provideTokenInterceptor(gateKeeper: GateKeeper): Interceptor {
         return Interceptor {
-            it.proceed(it.request())
+            if (gateKeeper.isLoggedIn()) {
+                val request = it.request().newBuilder()
+                        .addHeader("AccessToken", gateKeeper.getAuthToken())
+                        .build()
+                it.proceed(request)
+            } else {
+                it.proceed(it.request())
+            }
         }
     }
 
@@ -46,7 +54,6 @@ class NetworkModule(val context: Context) {
         okBuilder.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         return okBuilder.build()
     }
-
 
 
     @Provides

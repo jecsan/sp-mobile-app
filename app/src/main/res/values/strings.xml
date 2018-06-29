@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SourcePad Suite</string>
+    <string name="app_name">SP Suite</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -25,4 +25,8 @@
     <string name="emergency_label">Person to notify in case of emergency</string>
     <string name="avatar">Avatar</string>
     <string name="login_label">Let the productivity begin!</string>
+    <string name="logout">Logout</string>
+    <string name="suite">Suite</string>
+    <string name="requests">Requests</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

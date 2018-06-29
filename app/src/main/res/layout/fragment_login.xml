@@ -38,5 +38,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <ProgressBar
+        app:layout_constraintLeft_toRightOf="@id/signInBtn"
+        app:layout_constraintTop_toTopOf="@id/signInBtn"
+        app:layout_constraintBottom_toBottomOf="@id/signInBtn"
+        android:layout_marginStart="5dp"
+        android:id="@+id/progressBar"
+        android:visibility="invisible"
+        android:indeterminate="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp" />
+
 
 </android.support.constraint.ConstraintLayout>
