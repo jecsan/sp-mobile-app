@@ -1,6 +1,6 @@
 package com.sourcepad.sourcepadsuite.di.data
 
-import com.sourcepad.suite.data.Api
+import com.sourcepad.sourcepadsuite.data.api.SpApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -11,14 +11,14 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideSpApi(retrofit: Retrofit): Api {
-        return retrofit.create(Api::class.java)
+    fun provideSpApi(retrofit: Retrofit): SpApi {
+        return retrofit.create(SpApi::class.java)
     }
 
 
     interface Exposes {
 
-        val provideApi: Api
+        val provideSpApi: SpApi
 
     }
 

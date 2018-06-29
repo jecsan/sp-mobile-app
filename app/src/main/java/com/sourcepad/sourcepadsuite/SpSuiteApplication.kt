@@ -2,6 +2,7 @@ package com.sourcepad.sourcepadsuite
 
 import android.app.Activity
 import android.app.Application
+import android.app.LauncherActivity
 import android.support.v4.app.Fragment
 import com.greyblocks.gatekeeper.Gate
 import com.sourcepad.sourcepadsuite.di.AppModule
@@ -17,7 +18,7 @@ import javax.inject.Inject
 
 class SpSuiteApplication : Application(), HasActivityInjector, HasSupportFragmentInjector, Gate {
     override fun getGateClass(): Class<*> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return LauncherActivity::class.java
     }
 
     @Inject
@@ -39,7 +40,7 @@ class SpSuiteApplication : Application(), HasActivityInjector, HasSupportFragmen
 
         DaggerAppComponent.builder()
                 .apiModule(ApiModule())
-                .appModule(AppModule())
+                .appModule(AppModule(applicationContext))
                 .networkModule(NetworkModule(this))
                 .build().inject(this)
     }

@@ -2,12 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'io.objectbox'
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.sourcepad.sourcepadsuite"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -15,7 +16,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", "\"https://google.com\""
+            buildConfigField "String", "BASE_URL", "\"https://api.spsuite.co/api/\""
         }
         release {
             minifyEnabled false
@@ -60,6 +61,11 @@ dependencies {
 
     implementation 'org.parceler:parceler-api:1.1.10'
     implementation 'com.greyblocks:gatekeeper:0.1.2'
+
+    implementation "io.objectbox:objectbox-android:$objectboxVersion"
+    implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+
 
     kapt 'org.parceler:parceler:1.1.10'
 }

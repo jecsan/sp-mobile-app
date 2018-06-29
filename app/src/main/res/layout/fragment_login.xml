@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_launch"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/spLogoIv"
+        android:src="@drawable/logo_sp"
+        android:paddingEnd="80dp"
+        android:paddingStart="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="140dp" />
+
+    <TextView
+        android:id="@+id/loginLabelTv"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:text="@string/login_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spLogoIv" />
+
+
+    <com.google.android.gms.common.SignInButton
+        app:layout_constraintTop_toBottomOf="@id/loginLabelTv"
+        android:id="@+id/signInBtn"
+        android:layout_marginLeft="30dp"
+        app:buttonSize="wide"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</android.support.constraint.ConstraintLayout>

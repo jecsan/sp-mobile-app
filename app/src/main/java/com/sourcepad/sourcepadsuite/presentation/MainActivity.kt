@@ -12,6 +12,7 @@ import com.sourcepad.sourcepadsuite.R
 import com.sourcepad.sourcepadsuite.presentation.dashboard.DashboardPagerAdater
 import com.sourcepad.suite.di.viewmodels.ViewModelFactory
 import com.sourcepad.suite.presentation.MainActivityViewModel
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -25,16 +26,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     private val tabIcons = IntArray(5).apply {
-        this[0] = android.R.drawable.btn_minus
-        this[1] = android.R.drawable.btn_minus
-        this[2] = android.R.drawable.btn_minus
-        this[3] = android.R.drawable.btn_minus
-        this[4] = android.R.drawable.btn_minus
+        this[0] = R.drawable.ic_dashboard
+        this[1] = R.drawable.ic_shoutout
+        this[2] = R.drawable.ic_streams
+        this[3] = R.drawable.ic_next24
+        this[4] = R.drawable.ic_employees
     }
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+        mainViewModel = viewModelFactory.create(MainActivityViewModel::class.java)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
@@ -53,13 +55,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         viewPager.adapter = DashboardPagerAdater(supportFragmentManager)
         tabs.setupWithViewPager(viewPager)
 
-        for(i in 0..tabs.tabCount){
-            tabs.getTabAt(i)?.setIcon( tabIcons[i])
+        for (i in 0..tabs.tabCount) {
+            tabs.getTabAt(i)?.setIcon(tabIcons[i])
         }
 
 
 
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.checkAuth(this)
     }
 
     override fun onBackPressed() {

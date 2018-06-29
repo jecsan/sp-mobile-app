@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+
+        <TextView
+            android:id="@+id/dashboardWelcomeMsgTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:text="Hello Gene, Welcome to your dashboard." />
+
+        <include layout="@layout/dashboard_streams" />
+
+
+        <TextView
+            android:id="@+id/timeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:text="MNL 08:30:00PM EST 08:30:AM" />
+
+        <include layout="@layout/dashboard_nxt24"/>
+
+        <include layout="@layout/dashboard_balance"/>
+
+        <include layout="@layout/dashboard_events"/>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

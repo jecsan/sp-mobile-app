@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sourcepad.sourcepadsuite.R
 
-class TabFragment : Fragment() {
+open class TabFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tab, container, false)

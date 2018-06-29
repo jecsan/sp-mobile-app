@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <ImageView
+            android:id="@+id/avatarIv"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/avatarIv"
+            app:layout_constraintTop_toTopOf="@+id/avatarIv"
+            tools:text="Jose Edwin Santiago" />
+
+        <TextView
+            android:id="@+id/titleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="2dp"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@id/avatarIv"
+            app:layout_constraintTop_toBottomOf="@id/nameTv"
+            tools:text="Android Developer" />
+
+        <TextView
+            android:id="@+id/phoneNumTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/avatarIv"
+            tools:text="0916 3534 5454" />
+
+
+        <TextView
+            android:id="@+id/emailTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/phoneNumTv"
+            tools:text="joeds@sourcepad.com" />
+
+
+        <TextView
+            android:id="@+id/locationTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/emailTv"
+            tools:text="123 Street Name corner, Street address, Town Name, City Name Country, Zipcode" />
+
+        <TextView
+            android:id="@+id/birthDateTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/locationTv"
+            tools:text="February 18" />
+
+        <TableLayout
+            android:id="@+id/keyValueTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:stretchColumns="0,1"
+            app:layout_constraintTop_toBottomOf="@id/birthDateTv">
+
+            <TableRow android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_column="0"
+                    android:text="@string/start_date"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/startDateTv"
+                    android:layout_column="1"
+                    tools:text="fff" />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_column="0"
+                    android:text="@string/id_no"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/idTv"
+                    android:layout_column="1"
+                    tools:text="23435344" />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_column="0"
+                    android:text="@string/tin_no"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tinTv"
+                    android:layout_column="1"
+                    tools:text="fff" />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_column="0"
+                    android:text="@string/sss_no"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/sssTv"
+                    android:layout_column="1"
+                    tools:text="fff" />
+            </TableRow>
+
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/emergencyContactLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/emergency_label"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/keyValueTable" />
+
+        <TextView
+            android:id="@+id/personToNotifyTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="@+id/emergencyContactLabel"
+            app:layout_constraintTop_toBottomOf="@id/emergencyContactLabel"
+            tools:text="Emmanuel Cabral" />
+
+        <TextView
+            android:id="@+id/personToNotifyNumberTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/personToNotifyTv"
+            app:layout_constraintTop_toBottomOf="@id/personToNotifyTv"
+            tools:text="0934 345 3466" />
+
+
+        <ImageButton
+            android:id="@+id/emergencyCallSms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/personToNotifyNumberTv"
+            app:layout_constraintRight_toLeftOf="parent" />
+
+        <ImageButton
+            android:id="@+id/emergencyCallIb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toLeftOf="@id/emergencyCallSms" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
