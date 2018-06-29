@@ -3,6 +3,7 @@ package com.sourcepad.sourcepadsuite.di
 import com.sourcepad.sourcepadsuite.presentation.MainActivity
 import com.sourcepad.sourcepadsuite.presentation.account.LauncherActivity
 import com.sourcepad.sourcepadsuite.presentation.account.LoginFragment
+import com.sourcepad.sourcepadsuite.presentation.commendation.CommendationFragment
 import com.sourcepad.sourcepadsuite.presentation.dashboard.DashboardFragment
 import com.sourcepad.sourcepadsuite.presentation.employee.EmployeeFragment
 import com.sourcepad.suite.presentation.DetailFragment
@@ -32,5 +33,8 @@ abstract class BuildersModule {
     abstract fun contributeDashboardFragment(): DashboardFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeEmployeeFragmen(): EmployeeFragment
+    abstract fun contributeEmployeeFragment(): EmployeeFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCommendationFragment(): CommendationFragment
 }

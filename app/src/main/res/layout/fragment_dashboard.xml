@@ -38,7 +38,8 @@
 
         <include layout="@layout/dashboard_balance"/>
 
-        <include layout="@layout/dashboard_events"/>
+        <include layout="@layout/dashboard_company_events"/>
+        <include layout="@layout/dashboard_employee_events"/>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

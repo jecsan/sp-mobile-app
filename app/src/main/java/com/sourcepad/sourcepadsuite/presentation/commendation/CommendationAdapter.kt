@@ -1,13 +1,13 @@
-package com.sourcepad.sourcepadsuite.presentation.shoutout
+package com.sourcepad.sourcepadsuite.presentation.commendation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.sourcepad.sourcepadsuite.R
 import com.sourcepad.sourcepadsuite.presentation.BaseRecyclerAdapter
-import com.sourcepad.sourcepadsuite.presentation.model.ShoutOutUiModel
+import com.sourcepad.sourcepadsuite.presentation.model.CommendationUiModel
 import kotlinx.android.synthetic.main.item_shoutout.view.*
 
-class ShoutAdapter : BaseRecyclerAdapter<ShoutOutUiModel>() {
+class CommendationAdapter : BaseRecyclerAdapter<CommendationUiModel>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): BaseViewHolder {
         return BaseRecyclerAdapter.BaseViewHolder(LayoutInflater.from(p0.context).inflate(R.layout.item_shoutout,
                 p0, false))

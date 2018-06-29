@@ -15,7 +15,8 @@
     <string name="this_month">This Month</string>
     <string name="this_week">This Week</string>
     <string name="nxt_24_header">Your NEXT24 Tasks</string>
-    <string name="events_this_month">Events this months</string>
+    <string name="company_events_this_month">Company Events this Month</string>
+    <string name="employee_events_this_month">Employee Events Today</string>
     <string name="to">to</string>
     <string name="start_date">Start date</string>
     <string name="id_no">ID No</string>
@@ -29,4 +30,5 @@
     <string name="suite">Suite</string>
     <string name="requests">Requests</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="call">Call</string>
 </resources>

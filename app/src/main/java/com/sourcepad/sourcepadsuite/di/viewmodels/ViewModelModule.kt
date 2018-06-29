@@ -2,6 +2,7 @@ package com.sourcepad.suite.di.viewmodels
 
 import android.arch.lifecycle.ViewModel
 import com.sourcepad.sourcepadsuite.presentation.account.LoginViewModel
+import com.sourcepad.sourcepadsuite.presentation.commendation.CommendationViewModel
 import com.sourcepad.sourcepadsuite.presentation.dashboard.DashboardViewModel
 import com.sourcepad.sourcepadsuite.presentation.employee.EmployeeViewModel
 import com.sourcepad.suite.presentation.DetailFragmentViewModel
@@ -46,4 +47,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(EmployeeViewModel::class)
     internal abstract fun employeeViewModel(viewModel: EmployeeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CommendationViewModel::class)
+    internal abstract fun commendationViewModel(viewModel: CommendationViewModel): ViewModel
 }

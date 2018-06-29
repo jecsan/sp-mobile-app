@@ -1,4 +1,4 @@
-package com.sourcepad.sourcepadsuite.data.api
+package com.sourcepad.sourcepadsuite.data.api.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,41 +1,35 @@
-package com.sourcepad.sourcepadsuite.presentation.employee
+package com.sourcepad.sourcepadsuite.presentation.commendation
 
 import android.arch.lifecycle.Observer
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sourcepad.sourcepadsuite.R
 import com.sourcepad.sourcepadsuite.presentation.State
-import com.sourcepad.sourcepadsuite.presentation.model.EmployeeUiModel
+import com.sourcepad.sourcepadsuite.presentation.model.CommendationUiModel
 import com.sourcepad.suite.di.viewmodels.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
-class EmployeeFragment : DaggerFragment() {
+class CommendationFragment : DaggerFragment() {
 
     @Inject
     lateinit var modelFactory: ViewModelFactory
-
-    private lateinit var adapter: EmployeeAdapter
-    private lateinit var vm: EmployeeViewModel
+    private lateinit var vm : CommendationViewModel
+    private lateinit var adapter : CommendationAdapter
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        vm = modelFactory.create(EmployeeViewModel::class.java)
+        vm = modelFactory.create(CommendationViewModel::class.java)
         vm.mutableData.observe(this, Observer {
             when (it?.state) {
                 State.SUCCESS -> {
                     swipeRefresh?.isRefreshing = false
                     adapter.items = it.user?.map {
-                        EmployeeUiModel(it.id ?: "",
-                                it.attributes.name ?: "", it.attributes.position ?: "", it.attributes.mobileNumber?:"","")
-                    } ?: emptyList()
+                        CommendationUiModel(it.id, it.type , it.attributes.from, it.attributes.to,it.attributes.message,"") } ?: emptyList()
                 }
                 State.LOADING -> {
                     swipeRefresh?.isRefreshing = true
@@ -50,10 +44,6 @@ class EmployeeFragment : DaggerFragment() {
         })
     }
 
-    private fun call(phoneNumber:String){
-        val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber"))
-        startActivity(intent)
-    }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -62,23 +52,17 @@ class EmployeeFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = EmployeeAdapter()
-        adapter.onCallSubject.subscribe {
-            call(it.phoneNumber)
-        }
-
-        adapter.onClickSubject.subscribe {
-            startActivity(Intent(context, EmployeeDetailActivity::class.java))
-        }
-        swipeRefresh?.post {
-            swipeRefresh.isRefreshing = true
-        }
-        swipeRefresh?.setOnRefreshListener {
-            vm.getEmployees()
-        }
-
-        vm.getEmployees()
-        recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-        recyclerView.adapter = adapter
+        adapter = CommendationAdapter()
+        recyclerView.adapter =adapter
+        vm.getCommendations()
+//                CommendationAdapter().apply {
+//            this.items = ArrayList<CommendationUiModel>().apply {
+//                for (i in 0..20) {
+//                    add(CommendationUiModel(1, "Shout-out", "girltester",
+//                            "boytester", " Helping out golfcrow", "06-30-2018"))
+//
+//                }
+//            }
+//        }
     }
 }

@@ -17,7 +17,7 @@
             android:id="@+id/eventsHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/events_this_month"
+            android:text="@string/company_events_this_month"
             android:textAllCaps="true"
             android:textStyle="bold" />
 
