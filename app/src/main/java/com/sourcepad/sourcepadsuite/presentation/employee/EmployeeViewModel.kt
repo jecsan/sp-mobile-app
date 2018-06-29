@@ -18,8 +18,9 @@ class EmployeeViewModel @Inject constructor(private val spApi: SpApi) : ViewMode
         spApi.getEmployees().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    mutableData.value = EmployeeState(State.SUCCESS, it, Source.REMOTE)
+                    mutableData.value = EmployeeState(State.SUCCESS, it.users, Source.REMOTE)
                 }, {
+                    mutableData.value = EmployeeState(State.FAILED)
                     it.printStackTrace()
                 })
     }

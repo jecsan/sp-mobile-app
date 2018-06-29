@@ -29,10 +29,20 @@ class EmployeeFragment : DaggerFragment() {
         vm.mutableData.observe(this, Observer {
             when (it?.state) {
                 State.SUCCESS -> {
+                    swipeRefresh?.isRefreshing = false
                     adapter.items = it.user?.map {
                         EmployeeUiModel(it.id ?: "",
-                                it.name ?: "", it.position ?: "", "")
+                                it.attributes.name ?: "", it.attributes.position ?: "", "")
                     } ?: emptyList()
+                }
+                State.LOADING -> {
+                    swipeRefresh?.isRefreshing = true
+
+                }
+                State.FAILED -> {
+                    swipeRefresh?.isRefreshing = false
+                }
+                else -> {
                 }
             }
         })
@@ -51,7 +61,12 @@ class EmployeeFragment : DaggerFragment() {
         adapter.onClickSubject.subscribe {
             startActivity(Intent(context, EmployeeDetailActivity::class.java))
         }
-
+        swipeRefresh?.post {
+            swipeRefresh.isRefreshing = true
+        }
+        swipeRefresh?.setOnRefreshListener {
+            vm.getEmployees()
+        }
 
         vm.getEmployees()
         recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))

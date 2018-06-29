@@ -3,6 +3,7 @@ package com.sourcepad.sourcepadsuite.di.data
 import android.content.Context
 import com.greyblocks.gatekeeper.GateKeeper
 import com.sourcepad.sourcepadsuite.BuildConfig
+import com.sourcepad.sourcepadsuite.presentation.account.Key
 import dagger.Module
 import dagger.Provides
 import dagger.android.AndroidInjectionModule
@@ -28,6 +29,9 @@ class NetworkModule(val context: Context) {
             if (gateKeeper.isLoggedIn()) {
                 val request = it.request().newBuilder()
                         .addHeader("AccessToken", gateKeeper.getAuthToken())
+                        .addHeader("SsoToken", gateKeeper.getUserData(Key.SSO_TOKEN))
+                        .addHeader("UserId", gateKeeper.getUserData(Key.ID))
+                        .addHeader("UserEmail", gateKeeper.getCurrentAccount()?.name)
                         .build()
                 it.proceed(request)
             } else {

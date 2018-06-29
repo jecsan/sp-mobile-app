@@ -10,8 +10,8 @@ interface SpApi {
     fun login(@Field("email") email: String) : Observable<UserResponse>
 
     @GET("users")
-    fun getEmployees() : Observable<List<User>>
+    fun getEmployees() : Observable<Employees>
 
     @GET("users/{id}")
-    fun getEmployee(@Path("id") id: String) : Observable<List<User>>
+    fun getEmployee(@Path("id") id: String) : Observable<Employees>
 }

@@ -10,8 +10,8 @@
         android:id="@+id/avatarIv"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@color/colorAccent"
-        android:contentDescription="@string/avatar" />
+        android:contentDescription="@string/avatar"
+        android:src="@drawable/ic_male" />
 
     <TextView
         android:id="@+id/nameTv"
@@ -38,10 +38,14 @@
 
     <ImageButton
         android:id="@+id/callIb"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@color/colorAccent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:padding="8dp"
+        android:src="@drawable/ic_call"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

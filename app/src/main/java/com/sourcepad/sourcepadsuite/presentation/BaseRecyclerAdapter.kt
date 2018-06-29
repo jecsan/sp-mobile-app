@@ -7,6 +7,10 @@ import io.reactivex.subjects.PublishSubject
 abstract class BaseRecyclerAdapter<T>() : RecyclerView.Adapter<BaseRecyclerAdapter.BaseViewHolder>() {
 
     var items: List<T> = emptyList()
+    set(value) {
+        field = value
+        notifyDataSetChanged()
+    }
     val onClickSubject: PublishSubject<T> = PublishSubject.create<T>()
 
     constructor(items: List<T>) : this() {

@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sourcepad.sourcepadsuite.R
-import com.sourcepad.sourcepadsuite.data.api.User
+import com.sourcepad.sourcepadsuite.data.account.MyUser
 import com.sourcepad.sourcepadsuite.presentation.State
 import com.sourcepad.suite.di.viewmodels.ViewModelFactory
 import dagger.android.support.DaggerFragment
@@ -28,14 +28,14 @@ class DashboardFragment : DaggerFragment() {
         dashboardViewModel.mutableData.observe(this, Observer {
             when (it?.state) {
                 State.DEFAULT -> {
-                    initDashboard(it.user)
+                    it.user?.let { it1 -> initDashboard(it1) }
                 }
             }
         })
     }
 
 
-    private fun initDashboard(user: User?) {
+    private fun initDashboard(user: MyUser) {
         user?.apply {
             dashboardWelcomeMsgTv.text = Html.fromHtml("Hello <b>${user.name}</b>, Welcome to your dashboard.")
         }

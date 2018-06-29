@@ -23,10 +23,10 @@ class LoginViewModel @Inject constructor(private val spApi: SpApi, private val g
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     val user = it.user
-                    gateKeeper.login(Account(user.email, "sp_suite"), null, user.accessToken!!)
+                    gateKeeper.login(Account(user.attributes.email, "sp_suite"), null, user.attributes.accessToken!!)
                     gateKeeper.saveUserData(Key.ID, user.id ?: "")
-                    gateKeeper.saveUserData(Key.SSO_TOKEN, user.ssoToken ?: "")
-                    gateKeeper.saveUserData(Key.NAME, user.name ?: "")
+                    gateKeeper.saveUserData(Key.SSO_TOKEN, user.attributes.ssoToken ?: "")
+                    gateKeeper.saveUserData(Key.NAME, user.attributes.name ?: "")
                     mutableData.value = LoginState(State.SUCCESS,user)
                 }, {
                     mutableData.value = LoginState(State.FAILED)
