@@ -33,8 +33,17 @@ class EmployeeFragment : DaggerFragment() {
                 State.SUCCESS -> {
                     swipeRefresh?.isRefreshing = false
                     adapter.items = it.user?.map {
-                        EmployeeUiModel(it.id ?: "",
-                                it.attributes.name ?: "", it.attributes.position ?: "", it.attributes.mobileNumber?:"","")
+                        EmployeeUiModel(it.id,
+                                it.attributes.name ?: "",
+                                it.attributes.position ?: "",
+                                it.attributes.mobileNumber?:"",
+                                "",
+                                it.attributes.skype?:"",
+                                it.attributes.tinNumber?:"",
+                                it.attributes.sssNumber?:"",
+                                it.attributes.startDate?:"",
+                                it.attributes.idNumber.toString(),
+                                it.attributes.address?:"")
                     } ?: emptyList()
                 }
                 State.LOADING -> {

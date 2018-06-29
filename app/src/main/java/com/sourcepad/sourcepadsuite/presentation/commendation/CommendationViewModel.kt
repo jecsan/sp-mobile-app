@@ -15,7 +15,8 @@ class CommendationViewModel @Inject constructor(private val spApi: SpApi): ViewM
     val mutableData = MutableLiveData<CommendationState>()
 
     fun getCommendations() {
-        spApi.getCommendations().subscribeOn(Schedulers.io())
+        spApi.getCommendations()
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     mutableData.value = CommendationState(State.SUCCESS, it.commendations, Source.REMOTE)

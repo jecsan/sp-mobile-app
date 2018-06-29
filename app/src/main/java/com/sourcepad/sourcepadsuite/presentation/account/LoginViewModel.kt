@@ -18,7 +18,7 @@ class LoginViewModel @Inject constructor(private val spApi: SpApi, private val g
     }
 
     fun login() {
-        spApi.login("mobile2@sourcepad.com")
+        spApi.login("joeds@sourcepad.com")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({

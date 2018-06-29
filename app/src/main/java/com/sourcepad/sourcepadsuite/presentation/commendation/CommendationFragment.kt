@@ -29,7 +29,12 @@ class CommendationFragment : DaggerFragment() {
                 State.SUCCESS -> {
                     swipeRefresh?.isRefreshing = false
                     adapter.items = it.user?.map {
-                        CommendationUiModel(it.id, it.type , it.attributes.from, it.attributes.to,it.attributes.message,"") } ?: emptyList()
+                        CommendationUiModel(it.id,
+                                it.type.capitalize(),
+                                it.attributes.from,
+                                it.attributes.to,
+                                it.attributes.message?:"No message",
+                                "") } ?: emptyList()
                 }
                 State.LOADING -> {
                     swipeRefresh?.isRefreshing = true
