@@ -1,6 +1,7 @@
 package com.sourcepad.sourcepadsuite.presentation.employee
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.sourcepad.sourcepadsuite.R
 import com.sourcepad.sourcepadsuite.presentation.BaseRecyclerAdapter
@@ -11,6 +12,7 @@ import kotlinx.android.synthetic.main.item_employee.view.*
 class EmployeeAdapter : BaseRecyclerAdapter<EmployeeUiModel>() {
 
     val onCallSubject: PublishSubject<EmployeeUiModel> = PublishSubject.create<EmployeeUiModel>()
+    val onClickTransitionSubject: PublishSubject<Pair<EmployeeUiModel, View>> = PublishSubject.create<Pair<EmployeeUiModel, View>>()
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): BaseViewHolder {
         return BaseViewHolder(LayoutInflater.from(p0.context).inflate(R.layout.item_employee, p0, false))
     }
@@ -27,7 +29,7 @@ class EmployeeAdapter : BaseRecyclerAdapter<EmployeeUiModel>() {
             //TODO load image?
 
             setOnClickListener {
-                onClickSubject.onNext(item)
+                onClickTransitionSubject.onNext(Pair(item, avatarIv))
             }
         }
     }

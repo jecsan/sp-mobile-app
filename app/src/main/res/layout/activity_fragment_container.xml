@@ -3,21 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@android:color/white"
             android:theme="@style/SpToolbar"
+            android:elevation="0dp"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:titleTextColor="@android:color/black" />
 
-    </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
         android:layout_marginTop="?android:actionBarSize"

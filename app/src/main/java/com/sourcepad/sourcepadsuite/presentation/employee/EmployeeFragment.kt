@@ -6,18 +6,25 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sourcepad.sourcepadsuite.R
+import com.sourcepad.sourcepadsuite.getLongDate
+import com.sourcepad.sourcepadsuite.getShortDate
 import com.sourcepad.sourcepadsuite.presentation.State
+import com.sourcepad.sourcepadsuite.presentation.account.Key
 import com.sourcepad.sourcepadsuite.presentation.model.EmployeeUiModel
 import com.sourcepad.suite.di.viewmodels.ViewModelFactory
 import com.tbruyelle.rxpermissions2.RxPermissions
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_list.*
+import org.parceler.Parcels
+import java.util.*
 import javax.inject.Inject
+
 
 class EmployeeFragment : DaggerFragment() {
 
@@ -35,17 +42,23 @@ class EmployeeFragment : DaggerFragment() {
                 State.SUCCESS -> {
                     swipeRefresh?.isRefreshing = false
                     adapter.items = it.user?.map {
+                        val attr = it.attributes
+
                         EmployeeUiModel(it.id,
-                                it.attributes.name ?: "",
-                                it.attributes.position ?: "",
-                                it.attributes.mobileNumber?:"",
+                                attr.name ?: "",
+                                attr.position ?: "",
+                                attr.mobileNumber?:"",
                                 "",
-                                it.attributes.skype?:"",
-                                it.attributes.tinNumber?:"",
-                                it.attributes.sssNumber?:"",
-                                it.attributes.startDate?:"",
-                                it.attributes.idNumber.toString(),
-                                it.attributes.address?:"")
+                                attr.skype?:"",
+                                attr.tinNumber?:"",
+                                attr.sssNumber?:"",
+                                attr.startDate?:"",
+                                attr.idNumber.toString(),
+                                attr.address?:"",
+                                attr.personToNotify?:"",
+                                attr.personToNotifyMobile?:"",
+                                attr.email?:"",
+                                attr.birthday?.getLongDate()?:"")
                     } ?: emptyList()
                 }
                 State.LOADING -> {
@@ -82,8 +95,13 @@ class EmployeeFragment : DaggerFragment() {
 
         }
 
-        adapter.onClickSubject.subscribe {
-            startActivity(Intent(context, EmployeeDetailActivity::class.java))
+        adapter.onClickTransitionSubject.subscribe {
+
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity as Activity, it.second, "profile")
+
+            startActivity(Intent(context, EmployeeDetailActivity::class.java).apply {
+                putExtra(Key.PARCEL, Parcels.wrap(it.first))
+            }, options.toBundle())
         }
         swipeRefresh?.post {
             swipeRefresh.isRefreshing = true

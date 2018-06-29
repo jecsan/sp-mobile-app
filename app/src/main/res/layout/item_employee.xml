@@ -10,6 +10,7 @@
         android:id="@+id/avatarIv"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:transitionName="profile"
         android:contentDescription="@string/avatar"
         android:src="@drawable/ic_male" />
 
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
+        android:transitionName="displayName"
         android:textColor="@color/colorAccent"
         android:textSize="22sp"
         android:textStyle="bold"

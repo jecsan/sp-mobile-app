@@ -2,6 +2,7 @@ package com.sourcepad.sourcepadsuite.data.api.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 class User {
 
@@ -42,7 +43,7 @@ class User {
         var startDate: String? = null
         @SerializedName("birthday")
         @Expose
-        var birthday: String? = null
+        var birthday: Date? = null
         @SerializedName("id_number")
         @Expose
         var idNumber: Long = 0

@@ -15,11 +15,13 @@ class DashboardViewModel @Inject constructor(private val gateKeeper: GateKeeper)
     }
 
     init {
+       displayUserInfo()
+    }
 
+    fun displayUserInfo(){
         val user = MyUser(gateKeeper.getUserData(Key.NAME),gateKeeper.getUserData(Key.ID)?:"").apply {
             mutableData.value = MyUserState(State.DEFAULT, this)
         }
-
     }
 
 }

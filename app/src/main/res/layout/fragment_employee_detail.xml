@@ -8,14 +8,16 @@
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:paddingBottom="24dp"
+        android:paddingEnd="24dp"
+        android:paddingStart="24dp">
 
         <ImageView
             android:id="@+id/avatarIv"
-            android:src="@drawable/ic_male"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            />
+            android:src="@drawable/ic_male"
+            android:transitionName="profile" />
 
         <TextView
             android:id="@+id/nameTv"
@@ -27,6 +29,7 @@
             android:textColor="@color/colorAccent"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:transitionName="displayName"
             app:layout_constraintLeft_toRightOf="@id/avatarIv"
             app:layout_constraintTop_toTopOf="@+id/avatarIv"
             tools:text="Jose Edwin Santiago" />
@@ -53,63 +56,96 @@
             tools:text="0916 3534 5454" />
 
 
+        <ImageButton
+            app:layout_constraintTop_toTopOf="@id/phoneNumTv"
+            android:id="@+id/sms"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/circle"
+            android:src="@drawable/ic_sms"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/callIb"
+            android:layout_width="32dp"
+            app:layout_constraintRight_toLeftOf="@id/sms"
+            android:layout_height="32dp"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/ic_call"
+            android:layout_marginRight="10dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/phoneNumTv"
+            android:layout_marginEnd="10dp" />
+
+        <ImageButton
+            android:id="@+id/emailIb"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/ic_mail"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/callIb" />
+
         <TextView
             android:id="@+id/emailTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/phoneNumTv"
             tools:text="joeds@sourcepad.com" />
 
         <LinearLayout
             android:id="@+id/locationContainer"
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/emailTv"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            app:layout_constraintTop_toBottomOf="@id/emailTv">
 
             <ImageView
-                android:layout_marginTop="2dp"
-                android:src="@drawable/ic_location"
                 android:layout_width="25dp"
-                android:layout_height="25dp" />
+                android:layout_height="25dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_location" />
 
             <TextView
                 android:id="@+id/locationTv"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="top"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:textSize="18sp"
-                tools:text="123 Street Name corner, Street address, Town Name, City Name Country, Zipcode"
-                android:layout_marginStart="10dp" />
+                tools:text="123 Street Name corner, Street address, Town Name, City Name Country, Zipcode" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:id="@+id/bdateContainer"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/locationContainer"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/locationContainer">
 
             <ImageView
-                android:layout_marginTop="2dp"
-                android:src="@drawable/ic_cake"
                 android:layout_width="25dp"
-                android:layout_height="25dp" />
+                android:layout_height="25dp"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/ic_cake" />
 
             <TextView
                 android:id="@+id/birthDateTv"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
                 android:textSize="18sp"
-                tools:text="February 18"
-                android:layout_marginStart="10dp" />
+                tools:text="February 18" />
 
 
         </LinearLayout>
@@ -188,7 +224,6 @@
         </TableLayout>
 
 
-
         <TextView
             android:id="@+id/emergencyContactLabel"
             android:layout_width="wrap_content"
@@ -197,7 +232,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:text="@string/emergency_label"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -208,11 +243,11 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.7dp"
-            app:layout_constraintBottom_toTopOf="@+id/emergencyContactLabel"
-             />
+            app:layout_constraintBottom_toTopOf="@+id/emergencyContactLabel" />
 
         <TextView
             android:id="@+id/personToNotifyTv"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
@@ -224,28 +259,36 @@
 
         <TextView
             android:id="@+id/personToNotifyNumberTv"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             app:layout_constraintStart_toStartOf="@+id/personToNotifyTv"
             app:layout_constraintTop_toBottomOf="@id/personToNotifyTv"
             tools:text="0934 345 3466" />
 
 
         <ImageButton
-            android:id="@+id/emergencyCallSms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/emergencySms"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/circle"
+            android:src="@drawable/ic_sms"
             app:layout_constraintBottom_toBottomOf="@id/personToNotifyNumberTv"
             app:layout_constraintRight_toRightOf="parent" />
 
         <ImageButton
             android:id="@+id/emergencyCallIb"
-            android:src="@drawable/ic_call"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
             android:background="?android:selectableItemBackground"
-            app:layout_constraintTop_toTopOf="@id/personToNotifyTv"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            app:layout_constraintRight_toLeftOf="@id/emergencyCallSms" />
+            android:src="@drawable/ic_call"
+            app:layout_constraintBottom_toBottomOf="@id/personToNotifyNumberTv"
+            app:layout_constraintRight_toLeftOf="@id/emergencySms"
+            android:layout_marginRight="10dp" />
 
 
     </android.support.constraint.ConstraintLayout>
