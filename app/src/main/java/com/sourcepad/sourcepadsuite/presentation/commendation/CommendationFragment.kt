@@ -33,8 +33,8 @@ class CommendationFragment : DaggerFragment() {
                                 it.type.capitalize(),
                                 it.attributes.from,
                                 it.attributes.to,
-                                it.attributes.message?:"No message",
-                                "") } ?: emptyList()
+                                it.attributes.message?: "No message",
+                                it.attributes.date) } ?: emptyList()
                 }
                 State.LOADING -> {
                     swipeRefresh?.isRefreshing = true
@@ -59,6 +59,9 @@ class CommendationFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = CommendationAdapter()
         recyclerView.adapter =adapter
+        swipeRefresh.setOnRefreshListener {
+            vm.getCommendations()
+        }
         vm.getCommendations()
 //                CommendationAdapter().apply {
 //            this.items = ArrayList<CommendationUiModel>().apply {

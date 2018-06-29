@@ -65,6 +65,7 @@ dependencies {
     implementation "io.objectbox:objectbox-android:$objectboxVersion"
     implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 
 
     kapt 'org.parceler:parceler:1.1.10'

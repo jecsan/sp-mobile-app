@@ -1,5 +1,6 @@
 package com.sourcepad.sourcepadsuite.presentation.employee
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
@@ -13,6 +14,7 @@ import com.sourcepad.sourcepadsuite.R
 import com.sourcepad.sourcepadsuite.presentation.State
 import com.sourcepad.sourcepadsuite.presentation.model.EmployeeUiModel
 import com.sourcepad.suite.di.viewmodels.ViewModelFactory
+import com.tbruyelle.rxpermissions2.RxPermissions
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
@@ -72,8 +74,12 @@ class EmployeeFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = EmployeeAdapter()
-        adapter.onCallSubject.subscribe {
-            call(it.phoneNumber)
+        adapter.onCallSubject.subscribe { model->
+            RxPermissions(activity as Activity).request(android.Manifest.permission.CALL_PHONE)
+                    .subscribe {
+                        if(it)call(model.phoneNumber)
+                    }
+
         }
 
         adapter.onClickSubject.subscribe {

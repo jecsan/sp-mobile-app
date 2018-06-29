@@ -8,5 +8,6 @@ class Commendation(@SerializedName("id") val id: String, @SerializedName("type")
     class Attr(@SerializedName("message") val message: String?,
                @SerializedName("to_employee") val to: String,
                @SerializedName("from_employee") val from: String,
+               @SerializedName("date") val date: String,
                @SerializedName("is_cit") val isCit: Boolean)
 }
